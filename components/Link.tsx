@@ -10,7 +10,7 @@ const Link = ({
   return (
     <a
       href={link}
-      className={`${showMob ? 'flex' : 'hidden md:flex'} bg-blue-600 overflow-hidden px-3 h-10 items-center justify-center active:outline-1 outline-amber-950 font-semibold text-white relative group`}
+      className={`${showMob ? 'flex' : 'hidden md:flex'} bg-secondary overflow-hidden px-3 h-10 items-center justify-center active:outline-1 outline-amber-950 font-semibold text-white relative group`}
     >
       <span className='relative z-10 flex items-center justify-center'>
         {text}

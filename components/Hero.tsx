@@ -6,7 +6,7 @@ import Join from './Link';
 const Hero = () => {
   return (
     <section className='px-[20px] sm-px-[60px] pt-[80px] gap-20 w-full min-h-screen flex flex-col justify-between'>
-      <div className='active:outline-1 outline-amber-950 sm:hidden flex fixed bottom-7 px-5 text-[20px] items-center justify-center text-white left-1/2 -translate-x-1/2 h-10 bg-blue-600 group overflow-hidden'>
+      <div className='active:outline-1 outline-amber-950 sm:hidden flex fixed bottom-7 px-5 text-[20px] items-center justify-center text-white left-1/2 -translate-x-1/2 h-10 bg-secondary group overflow-hidden z-50'>
         <span>Download CV</span>
         <div className='w-full z-0 aspect-square absolute top-full rounded-full group-hover:top-1/5 left-0 group-active:top-1/5 [mask-image:linear-gradient(to_bottom,transparent,black_20%,black_80%,transparent)] transition-all duration-700 bg-amber-950'></div>
       </div>
@@ -36,12 +36,6 @@ const Hero = () => {
           alt='arpon'
           className='rounded-full bg-gray-200'
         />
-      </div>
-      <div className='flex justify-center'>
-        <div className='flex flex-col items-center w-[160px] justify-center text-blue-600'>
-          <span className='text-[35px]'>2+</span>
-          <span className='text-[35px]'>Project</span>
-        </div>
       </div>
     </section>
   );
