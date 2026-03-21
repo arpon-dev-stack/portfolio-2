@@ -11,16 +11,3 @@
   --color-secondary: var(--secondary);
   --color-alternative: var(--alternative);
 }
-
-@theme {
-  --animate-marquee: marquee 20s linear infinite;
-
-  @keyframes marquee {
-    from {
-      transform: translateX(0);
-    }
-    to {
-      transform: translateX(-50%);
-    }
-  }
-}
