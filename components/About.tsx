@@ -19,10 +19,10 @@ const About = () => {
         <h2 className='text-center text-header text-primary mt-10 font-semibold'>
           My Skills
         </h2>
-        <div className='flex-1 flex sm:gap-y-6 sm:gap-x-4 gap-x-[6px] gap-y-[10px] flex-wrap justify-center'>
+        <div className='flex-1 flex sm:gap-y-6 sm:gap-x-4 gap-x-[4px] gap-y-[10px] flex-wrap justify-center'>
           {skills.map((ele) => (
             <div
-              className='flex justify-between items-center skill-card bg-alternative group rounded-xl flex-col gap-8 shadow-lg hover:scale-105 transition-all duration-100'
+              className='flex max-w-[138px] justify-between items-center skill-card bg-alternative group rounded-xl flex-col gap-8 shadow-lg hover:scale-105 transition-all duration-100 p-2'
               key={ele.id}
             >
               <Image
