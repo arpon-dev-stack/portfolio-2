@@ -11,3 +11,15 @@
   --color-secondary: var(--secondary);
   --color-alternative: var(--alternative);
 }
+
+@layer components {
+  .text-header {
+    @apply text-[25px] font-medium;
+  }
+  .text-reading {
+    @apply text-[18px] font-normal;
+  }
+  .skill-card {
+    @apply w-[157px] bg-alternative p-3;
+  }
+}
