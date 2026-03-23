@@ -1,21 +1,50 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const Contact: React.FC = () => {
+  const [status, setStatus] = useState<
+    'IDLE' | 'SENDING' | 'SUCCESS' | 'ERROR'
+  >('IDLE');
+
+  const handleSubmit = async (e: React.SubmitEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setStatus('SENDING');
+
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+
+    // Convert FormData to a plain object to satisfy TypeScript
+    const data: Record<string, string> = {};
+    formData.forEach((value, key) => {
+      data[key] = value.toString();
+    });
+
+    try {
+      await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        // Now passing a clean, typed object
+        body: new URLSearchParams(data).toString(),
+      });
+
+      setStatus('SUCCESS');
+      form.reset();
+    } catch (error) {
+      console.error('Submission error:', error);
+      setStatus('ERROR');
+    }
+  };
+
   return (
-    <section className='sm:w-1/2 w-full mx-auto p-6 bg-slate-800 rounded-2xl'>
+    <section className='sm:w-1/2 w-full mx-auto p-6 bg-slate-800 rounded-2xl shadow-xl'>
       <h2 className='text-2xl font-bold text-white mb-6'>Message Me</h2>
 
-      {/* IMPORTANT: 
-        1. 'name' is how Netlify identifies this specific form in your dashboard.
-        2. 'data-netlify="true"' tells Netlify to handle the backend.
-      */}
       <form
         name='portfolio-contact'
-        method='POST'
+        onSubmit={handleSubmit}
         data-netlify='true'
         className='flex flex-col gap-4'
       >
-        {/* You MUST include this hidden input for React apps */}
+        {/* Hidden input is crucial for React/Netlify integration */}
         <input type='hidden' name='form-name' value='portfolio-contact' />
 
         <div>
@@ -52,10 +81,25 @@ const Contact: React.FC = () => {
 
         <button
           type='submit'
-          className='bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg font-bold transition-all'
+          disabled={status === 'SENDING'}
+          className={`py-2 rounded-lg font-bold transition-all ${
+            status === 'SUCCESS'
+              ? 'bg-green-600'
+              : 'bg-blue-600 hover:bg-blue-700'
+          } text-white`}
         >
-          Send Message
+          {status === 'SENDING'
+            ? 'Sending...'
+            : status === 'SUCCESS'
+              ? 'Message Sent!'
+              : 'Send Message'}
         </button>
+
+        {status === 'ERROR' && (
+          <p className='text-red-400 text-sm'>
+            Something went wrong. Please try again.
+          </p>
+        )}
       </form>
     </section>
   );
