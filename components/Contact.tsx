@@ -4,7 +4,6 @@ import React, { useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
 
 const Contact: React.FC = () => {
-  console.log(process.env.NEXT_PUBLIC_SERVICE_ID);
   const formRef = useRef<HTMLFormElement>(null);
   const [status, setStatus] = useState<
     'IDLE' | 'SENDING' | 'SUCCESS' | 'ERROR'
