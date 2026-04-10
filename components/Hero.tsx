@@ -23,9 +23,7 @@ const Hero = () => {
           <div className='flex flex-col'>
             <span className='text-header text-center'>
               Focused on building creative{' '}
-              <strong className='text-blue-600'>MERN</strong> and
-              <strong className={`text-blue-600`}> React Native</strong>{' '}
-              Application.
+              <strong className='text-blue-600'>MERN</strong>.
             </span>
             <p className='text-reading text-center mt-3'>
               Years ago for the curiosity of exploring web technology i found my
